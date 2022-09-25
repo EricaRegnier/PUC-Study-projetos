@@ -2,13 +2,15 @@ from django.db import models
 
 # Create your models here.
 
+#tudo que tá vazio é pq eu não sei em qual classificação o atributo se encaixa
+
 class usuario(models.Model):
     nome=models.CharField(max_length=100)
     sobrenome=models.CharField(max_length=100)
     email=models.EmailField()
     def _str_(self):
         return self.nome
-        
+
 
 class disciplina:
     codigo=models.IntegerField(default=7)
