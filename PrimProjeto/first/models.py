@@ -2,41 +2,53 @@ from django.db import models
 
 # Create your models here.
 
-class usuario:
-    nome=
-    sobrenome=
-    email=
+class usuario(models.Model):
+    nome=models.CharField(max_length=100)
+    sobrenome=models.CharField(max_length=100)
+    email=models.EmailField()
+    def _str_(self):
+        return self.nome
+        
+
 class disciplina:
-    codigo=
-    professores=
-    materiais=
+    codigo=models.IntegerField(default=7)
+    professores=models.TextField()
+    materiais=models.TextField()
+
 class mensagem:
-    data=
+    data=models.DateField()
     hora=
+
 class avaliacao:
-   professor=
-   satisfacaoProfessor=
+   professor=models.CharField(max_length=100)
+   satisfacaoProfessor=models.IntegerField(default=2)
    cobranca=
-   horasFora=
+   horasFora=models.IntegerField()
    contribuicao=
    dificuldade=
    observacao=
+
 class pergunta:
-    data=
+    data=models.DateField()
     hora=
-    conteudo=
+    conteudo=models.TextField()
+
 class resposta:
-    data=
+    data=models.DateField()
     hora=
-    conteudo=
+    conteudo=models.TextField()
+
 class encontro:
     local=
     horaio=
-    dia=
-    pessoasConfirmadas=
+    dia=models.DateField()
+    pessoasConfirmadas=models.ManyToManyField()
     frequincia=
+
 class demanda:
     frequencia=
+
+
 
 
 
