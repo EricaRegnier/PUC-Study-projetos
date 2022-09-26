@@ -10,3 +10,7 @@ from .models import demanda
 
 
 # Register your models here.
+
+from PrimProjeto.models import usuario
+u=usuario(nome=Aninha)
+u.save()
