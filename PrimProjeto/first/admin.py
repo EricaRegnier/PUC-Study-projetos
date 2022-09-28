@@ -11,49 +11,72 @@ from .models import demanda
 
 # Register your models here.
 
-class usuario(models.Model):
-    nome=models.CharField(max_length=30)
-    sobrenome=models.CharField(max_length=30)
-    email=models.EmailField()
-    def _str_(self):
-        return self.nome
+from first.models import usuario
+n=usuario(nome=input("Digite seu primiro nome: "))
+n.save()
+s=usuario(sobrenome=input("Digite seu sobrenome: "))
+s.save()
+e=usuario(email=input("Digite seu e-mail: "))
+e.save()
+
+from first.models import disciplina
+c=disciplina(codigo=input("Digite o codigo da dsiciplina: "))
+c.save()
+p=disciplina(professores=input("Digite o nome dos professores: "))
+p.save()
+m=disciplina(materiais=input("Materiais usados: "))
+m.save()
+
+from first.models import mensagem
+d=mensagem(data=input("Data da mensagem: "))
+d.save()
+h=mensagem(hora=input("hora da mensagem: "))
+h.save()
+
+from first.models import avaliacao
+p=avaliacao(professor=input("Professor: "))
+p.save()
+s=avaliacao(satisfacaoProfessor=input(" Numa escala de 0 a 7 qual foi a sua Satisfacao com o Professor? "))
+s.save()
+c=avaliacao(cobranca=input("Numa escala de 0 a 10 qual o nivel de Cobranca da dsiciplina? "))
+c.save()
+h=avaliacao(horasFora=input("Horas que voce passou estudando fora do horario de aula: "))
+h.save()
+cont=avaliacao(contribuicao=input("Numa escala de 0 a 10,quanto a disciplina contribuiu para o seu progesso no curso? "))
+cont.save()
+d=avaliacao(dificuldade=input("Numa escala de 0 a 10 qual e a dificuldade da disciplina: "))
+d.save()
+o=avaliacao(observacao=input("Observacoes sobre a disciplina: "))
+o.save()
+from first.models import pergunta
+d=pergunta(data=input("Data da pergunta: "))
+d.save()
+h=pergunta(hora=input("Hora da pergunta: "))
+h.save()
+c=pergunta(conteudo=input("Digite sua pergunta: "))
+c.save()
+
+from first.models import resposta
+d=resposta(data=input("Data da resposta: "))
+d.save()
+h=resposta(hora=input("Hora da resposta: "))
+h.save()
+c=resposta(conteudo=input("Digite sua resposta: "))
+c.save()
+
+from first.models import encontro
+l=encontro(local=input("Digite o local de encontro: "))
+l.save()
+h=encontro(horario=input("Digite o horario de encontro: "))
+h.save()
+d=encontro(dia=input("Digite o dia de encontro: "))
+d.save()
+p=encontro(pessoasConfirmadas=input("Pessoas confirmadas no encontro: "))
+p.save()
+f=encontro(frequincia=input("Digite a frequencia de encontro: "))
+f.save()
 
 
-class disciplina(models.Model):
-    codigo=models.IntegerField(default=7)
-    professores=models.TextField()
-    materiais=models.TextField()
-
-class mensagem(models.Model):
-    data=models.DateField()
-    hora=models.CharField(max_length=5)
-
-class avaliacao(models.Model):
-   professor=models.CharField(max_length=100)
-   satisfacaoProfessor=models.CharField(max_length=7)
-   cobranca=models.IntegerField(default=2) #pode ser 01,02..10
-   horasFora=models.IntegerField()
-   contribuicao=models.IntegerField(deffault=2)#mesma coisa da cobrança
-   dificuldade=models.IntegerField(deffault=2)
-   observacao=models.TextField()
-
-class pergunta(models.Model):
-    data=models.DateField()
-    hora=models.CharField(max_length=5)
-    conteudo=models.TextField()
-
-class resposta(models.Model):
-    data=models.DateField()
-    hora=models.CharField(max_length=5)
-    conteudo=models.TextField()
-
-class encontro(models.Model):
-    local=models.CharField(max_length=100)
-    horaio=models.CharField(max_length=5)
-    dia=models.DateField()
-    pessoasConfirmadas=models.TextField()
-    frequincia=models.CharField(max_length=100)
-
-class demanda(models.Model):
-    frequencia=models.CharField(max_length=100)
+from first.models import demanda
+f=demanda(frequencia=input("Frequencia de atividades: "))
 
