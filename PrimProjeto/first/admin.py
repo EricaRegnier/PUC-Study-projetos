@@ -36,7 +36,7 @@ h.save()
 from first.models import avaliacao
 p=avaliacao(professor=input("Professor: "))
 p.save()
-s=avaliacao(satisfacaoProfessor=input(" Numa escala de 0 a 7 qual foi a sua Satisfacao com o Professor? "))
+s=avaliacao(satisfacaoProfessor=input(" Numa escala de 0 a 10 qual foi a sua Satisfacao com o Professor? "))
 s.save()
 c=avaliacao(cobranca=input("Numa escala de 0 a 10 qual o nivel de Cobranca da dsiciplina? "))
 c.save()
