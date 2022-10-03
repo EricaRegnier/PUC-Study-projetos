@@ -3,7 +3,6 @@ from datetime import date
 
 # Create your models here.
 
-#tudo que tá vazio é pq eu não sei em qual classificação o atributo se encaixa
 
 class Usuario(models.Model):
     nome=models.CharField(max_length=30)
