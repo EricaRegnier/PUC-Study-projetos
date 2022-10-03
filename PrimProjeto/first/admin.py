@@ -1,16 +1,22 @@
 from django.contrib import admin
-from .models import Usuario
-from .models import Disciplina
-from .models import Mensagem
-from .models import Avaliacao
-from .models import Pergunta
-from .models import Resposta
-from .models import Encontro
-from .models import Demanda
+from .models import Usuario, Disciplina, Mensagem, Avaliacao, Pergunta, Resposta, Encontro, Demanda
 
 
 # Register your models here.
 
+
+admin.site.register(Usuario)
+admin.site.register(Disciplina)
+admin.site.register(Mensagem)
+admin.site.register(Avaliacao)
+admin.site.register(Pergunta)
+admin.site.register(Resposta)
+admin.site.register(Encontro)
+admin.site.register(Demanda)
+
+
+
+"""
 from first.models import Usuario
 n=Usuario(nome=input("Digite seu primiro nome: "))
 n.save()
@@ -79,4 +85,4 @@ f.save()
 
 from first.models import Demanda
 f=Demanda(frequencia=input("Frequencia de atividades: "))
-
+"""
