@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegistroForm
+from .forms import RegistroForm, RegistroAvaliacaoForm
 
 
 def index(request):
@@ -18,7 +17,7 @@ def registroUsuario(request):
             senha = form.cleaned_data.get('password1')
             usuario = authenticate(username=username, password=senha)
             login(request, usuario)
-            return redirect('index')
+            return redirect('menu')
     else:
         form = RegistroForm()
 
@@ -33,8 +32,24 @@ def loginUsuario(request):
         if usuario is not None:
             login(request, usuario)
             messages.success(request, "Logado com sucesso")
-            return redirect('index')
+            return redirect('menu')
         else:
             messages.error(request, "Nome de usuário ou senha errado")    
 
     return render(request, 'login.html')
+
+
+def menu(request):
+    return render(request, 'menu.html')
+
+
+def registroAvaliacao(request):
+    if request.method == 'POST':
+        form = RegistroAvaliacaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('menu')
+    else:
+        form = RegistroAvaliacaoForm()
+
+    return render(request, 'registroAvaliacao.html', {'form': form})
