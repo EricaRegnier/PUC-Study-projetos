@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br"></html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PUC-Study login</title>
 <style>
     body {
         background: #16161a ;
     }
-    .texto{
+    .text{
         font-family: allumi-std,sans-serif; 
     }
-
+    img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+    }
+    .container {
+        height: 200px;
+        position: relative;
+      }
+      
+      .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+   
 </style>
 
 </head>
@@ -17,8 +36,14 @@
 
 <h1 style="color:white;text-align: center;">Faça seu login</h1>
 <hr>
-<img src="iconeCadastro.png" alt="icone da foto de perfil do usuário", width="100",height="100">
-<p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">E-mail <br> Senha</p>
-<button onclick="document.location='tentativa perfil usuário.html'">Perfil</button>
+<img src="iconeCadastro.png" alt="icone da foto de perfil do usuário", width="100",height="100",style="width:50%;">
+<p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">E-mail 
+<p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">Senha</p>
+<div class="container">
+    <div class="center">
+        <button onclick="document.location='tentativa perfil usuário.html'">Perfil</button>
+    </div>
+</div>
 </body>
 </html>
+
