@@ -111,13 +111,13 @@
 
     <div class="container d-flex justify-content-center">
         <form class="form-inline barra-busca mx-auto">
-            <div style="color: #fffffe; padding-right: 1vw; padding-left: 1vw;">
+            <div style="color: #fffffe; padding-right: 1vw; padding-left: 1vw">
                 <p>Buscar disciplina</p>
             </div>
             <div class="form-group mx-ms-3">
-                <input type="text" class="form-control" id="codigo-disc" placeholder="Código NNN0000">
+                <input type="search" value="" class="form-control" id="search" placeholder="Código NNN0000" onchange="abrirPag()">
             </div>
-            <button type="submit" class="btn" style="background-color: #7f5af0; color: #fffffe">Buscar</button>
+            <button type="submit" class="btn" style="background-color: #7f5af0; color: #fffffe" onclick="abrirPag()">Buscar</button>
         </form>
     </div>
     
@@ -180,5 +180,15 @@
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati mollitia beatae magni alias libero? Quidem aperiam quas explicabo quasi nobis. Neque aliquam quae fuga. Qui doloribus aspernatur rem quis voluptatum?
         </p>
 
+
+        <script>
+            function abrirPag() {
+                var x = document.getElementById("search").value;
+
+                if (x === "INF1039"){
+                    window.open("inf1039.html");
+                }
+            }
+        </script>
 </body>
 </html>
