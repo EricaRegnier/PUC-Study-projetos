@@ -37,13 +37,20 @@
 <h1 style="color:white;text-align: center;">Faça seu login</h1>
 <hr>
 <img src="iconeCadastro.png" alt="icone da foto de perfil do usuário", width="100",height="100",style="width:50%;">
-<p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">E-mail 
-<p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">Senha</p>
-<div class="container">
-    <div class="center">
-        <button onclick="document.location='perfilusuario.html'">Confirmar cadastro</button>
+<form action="" method="post">
+    {% csrf_token %}
+    <p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">E-mail
+        <input name="username" value="" type="text"/> 
+    </p>
+    <p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px;">Senha
+        <input name="senha" type="password"/>
+    </p>
+    <div class="container">
+        <div class="center">
+            <button onclick="document.location='perfilusuario.html'">Confirmar login</button>
+        </div>
     </div>
-</div>
+</form>
 </body>
 </html>
 
