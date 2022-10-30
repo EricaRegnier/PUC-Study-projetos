@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .forms import RegistroForm, RegistroAvaliacaoForm
 
 
@@ -32,11 +32,21 @@ def loginUsuario(request):
         if usuario is not None:
             login(request, usuario)
             messages.success(request, "Logado com sucesso")
-            return redirect('menu')
+            return redirect('perfilUsuario')
         else:
             messages.error(request, "Nome de usuário ou senha errado")    
 
     return render(request, 'login.html')
+
+
+def logoutUsuario(request):
+    logout(request)
+    return redirect('menu')
+
+
+def perfilUsuario(request):
+    usuario = request.user
+    return render(request, 'perfilusuario.html', {'usuario':usuario})
 
 
 def menu(request):
@@ -53,3 +63,7 @@ def registroAvaliacao(request):
         form = RegistroAvaliacaoForm()
 
     return render(request, 'registroAvaliacao.html', {'form': form})
+
+
+def notificacoes(request):
+    return render(request, 'notificacoes.html')

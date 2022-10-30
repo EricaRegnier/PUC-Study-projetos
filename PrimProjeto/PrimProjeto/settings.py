@@ -63,9 +63,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.contrib.staticfiles.finders.FileSystemFinder',
-                'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-                'django.contrib.staticfiles.finders.DefaultStorageFinder',
+                #'django.contrib.staticfiles.finders.FileSystemFinder',
+                #'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                #'django.contrib.staticfiles.finders.DefaultStorageFinder',
             ],
         },
     },
@@ -125,8 +125,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    '/var/www/static/',
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
+AUTH_USER_MODEL = 'first.Usuario'

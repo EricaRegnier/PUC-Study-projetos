@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,7 +40,7 @@
     <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="menu.html">Home <span class="sr-only">(página atual)</span></a>
+          <a class="nav-link" href="menu">Home <span class="sr-only">(página atual)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,21 +57,21 @@
   <br />
   <br />
 
-    <img src = "logo provisoria.png" alt="logo Puc Study"  height = "90">
+    <img src = "{% static 'logo provisoria.png'%}" alt="logo Puc Study"  height = "90">
     <br />
     <br />
 
-    <img src = "Perfil.png" alt="icone da foto de perfil do usuário" width="200" height = "200" style = "display: block; margin-left: auto; margin-right: auto; margin-top: 1cm ;">
+    <img src = "{% static 'Perfil.png'%}" alt="icone da foto de perfil do usuário" width="200" height = "200" style = "display: block; margin-left: auto; margin-right: auto; margin-top: 1cm ;">
     <br />
     <div class="col-sm-4" style = "display: block; margin: auto;">
         <div class="card" style = "background-color: #16161a;">
           <div class="card-body">
             <ul class="list-group">
-              <li class="list-group-item" style = "color: #16161a">Nome e sobrenome</li>
+              <li class="list-group-item" style = "color: #16161a">{{usuario.nome}} {{usuario.sobrenome}}</li>
             </ul>
             <br />
             <ul class="list-group">
-                <li class="list-group-item" style = "color: #16161a">Email da puc</li>
+                <li class="list-group-item" style = "color: #16161a">{{usuario.email}}</li>
               </ul>
           </div> 
     </div>
@@ -79,7 +81,7 @@
         Minhas disciplinas
       </div>
       <div class="card-body">
-        <img src = "Disciplinas.png" alt="icone das disciplinas" width="70" height = "70">
+        <img src = "{% static 'Disciplinas.png' %}" alt="icone das disciplinas" width="70" height = "70">
       </div>
       
     </div>
@@ -97,7 +99,7 @@
     </div>
 
     <div class="btn-group">
-      <button  onclick="document.location='menu.html'"class="btn btn-dark" style = "display: block; margin-left:auto; margin-right:auto; margin-top: 2cm ;background-color: #7f5af0; color: #fffffe">Sair</button>
+      <button  onclick="document.location='logout'"class="btn btn-dark" style = "display: block; margin-left:auto; margin-right:auto; margin-top: 2cm ;background-color: #7f5af0; color: #fffffe">Sair</button>
       </button>
     </div>
     
