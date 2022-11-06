@@ -2,8 +2,7 @@
 <html lang="pt-br">
 <head>
     <link rel="icon" href= "Favicon.png"  type="image/x-icon">
-
-    <h1 style="color:white; text-align: center;"> Editar seu perfil </h1>
+    <h1 style="color:#6008AA ; text-align: center;"> Editar seu perfil </h1>
     <hr>
 </head>
 <style>
@@ -26,16 +25,33 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
       }
+	  .container {
+        height: 200px;
+        position: relative;
+      }
 </style>
 <br />
 <div class="col-sm-4" style = "display: block; margin: auto;">
     <div class="card" style = "background-color: white;">
       <div class="card-body">
         <ul class="list-group">
-          <h2 style="color: black; text-align: center;">{{usuario.nome}} {{usuario.sobrenome}} </h2>
-            <li style = "color: black">{{usuario.email}}</li>
-            <li  style = "color: black">{{usuario.senha}}</li>
-          </ul>
+			<form action="updaterecord/{{usuario}}" method="post">
+			Nome usuario:<br>
+			<input nome="first" value="{{usuario.nome}}">
+			<br><br>
+			Sobrenome:<br>
+			<input sobrenome="last" value="{{usuario.sobrenome}}">
+			<br><br>
+			Email:<br>
+			<input e-mail="email" value="{{usuario.email}}">
+			</form>
+            </ul>
+            <br />   
+
+	<div class="container">
+    <div class="center">
+        <button onclick="document.location='perfilusuario.html'">Confirmar</button>
+    </div>
       </div> 
 </div>
 <br />
