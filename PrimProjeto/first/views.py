@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, deletar
 from .forms import RegistroForm, RegistroAvaliacaoForm
 
 
@@ -67,3 +67,19 @@ def registroAvaliacao(request):
 
 def notificacoes(request):
     return render(request, 'notificacoes.html')
+    
+    
+def deletarPerfilUsuario(request):
+    if request.method=='POST':
+        email=request.POST['email']
+        senha=request.POST['senha']
+    usuario = authenticate(email=email, password=senha)
+    if usuario is not None:
+        deletar(request, usuario)
+        messages.success(request, "Perfil deletado com sucesso")
+        return redirect('login')
+    else:
+        messages.error(request, "Nome de usuário ou senha errado")
+    
+        
+    return render(request,'deletarPerfil.html')
