@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout, deletar
-from .forms import RegistroForm, RegistroAvaliacaoForm
+from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm
 
 
 def index(request):
@@ -47,6 +47,21 @@ def logoutUsuario(request):
 def perfilUsuario(request):
     usuario = request.user
     return render(request, 'perfilusuario.html', {'usuario':usuario})
+
+
+def updateUsuario(request):
+    usuario = request.user
+    if request.method == 'POST':
+        form = UpdateUsuarioForm(request.POST, instance=usuario)
+        print(form.errors)
+        if form.is_valid():
+            print(form.errors)
+            form.save()
+            return redirect('perfilUsuario')
+    else:
+        form = UpdateUsuarioForm(instance=usuario)
+
+    return render(request, 'editarPerfil.html', {'form': form})
 
 
 def menu(request):
