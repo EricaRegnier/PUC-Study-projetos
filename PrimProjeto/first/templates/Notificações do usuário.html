@@ -24,10 +24,17 @@
         transform: translate(-50%, -50%);
       }
 </style>
-<p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px; font-size: larger">INF1039<br>sua pergunta foi respondida por jao123</p>
+{% for pergunta in perguntas %}
+    {% for resposta in pergunta.resposta_set.all %}
+        <p style="color:#fffffe; text-align: center;border:2px solid #7f5af0;padding: 30px;margin: 50px; font-size: larger">
+        {{pergunta.disciplina.codigo}}<br>
+        Sua pergunta foi respondida por {{resposta.usuario.nome}} {{resposta.usuario.sobrenome}}
+        </p>
+    {% endfor %}
+{% endfor %}
 <div class="container">
     <div class="center">
-        <button onclick="document.location='perfilusuario.html'">Voltar ao perfil</button>
+        <button onclick="document.location='perfilusuario'">Voltar ao perfil</button>
     </div>
 </div>
 </body>

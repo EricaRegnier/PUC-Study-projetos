@@ -84,6 +84,12 @@ def notificacoes(request):
     return render(request, 'notificacoes.html')
     
     
+def notificacoesUsuario(request):
+    usuario=request.user
+    perguntas = usuario.pergunta_set.all()
+    return render(request, 'Notificações do usuário.html', {'perguntas': perguntas})
+
+
 def deletarPerfilUsuario(request):
     usuario=request.user
     success_url=reverse_lazy('perfil deletado')
