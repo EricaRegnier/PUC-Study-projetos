@@ -14,5 +14,5 @@ urlpatterns = [
     path('registroAvaliacao', views.registroAvaliacao, name='registroAvaliacao'),
     path('notificacoes', views.notificacoes, name='notificacoes'),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
-    path('deletar', views.deletarPerfilUsuario, name='deletar'),
+    path('deletar', views.deletarPerfilUsuario.as_view(), name="deletar"),
 ]

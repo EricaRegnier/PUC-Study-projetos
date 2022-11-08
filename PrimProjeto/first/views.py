@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout, deletar
-from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm
-
+from django.contrib.auth import login, authenticate, logout
+from django.urls import reverse_lazy
+from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm, DeletarPerfilUsuario
 
 def index(request):
     return render(request, 'index.html')
@@ -85,16 +85,9 @@ def notificacoes(request):
     
     
 def deletarPerfilUsuario(request):
-    if request.method=='POST':
-        email=request.POST['email']
-        senha=request.POST['senha']
-    usuario = authenticate(email=email, password=senha)
-    if usuario is not None:
-        deletar(request, usuario)
-        messages.success(request, "Perfil deletado com sucesso")
-        return redirect('login')
-    else:
-        messages.error(request, "Nome de usuário ou senha errado")
+    usuario=request.user
+    success_url=reverse_lazy('perfil deletado')
+    return render(request, 'deletarPerfil.html')
+   
     
-        
-    return render(request,'deletarPerfil.html')
+    

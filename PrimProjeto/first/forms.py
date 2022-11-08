@@ -19,3 +19,9 @@ class RegistroAvaliacaoForm(forms.ModelForm):
     class Meta:
         model = Avaliacao
         fields = ('professor','satisfacaoProfessor','cobranca','horasFora','contribuicao','dificuldade','observacao')
+
+class DeletarPerfilUsuario(forms.ModelForm):
+    class meta:
+        model = Usuario
+        fields = ('nome','sobrenome','email','senha')
+    
