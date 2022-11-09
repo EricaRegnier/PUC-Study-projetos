@@ -93,13 +93,13 @@ def deletarPerfilUsuario(request):
     if request.method=='POST':
         email=request.POST['email']
         senha=request.POST['senha']
-    usuario = authenticate(email=email, password=senha)
-    if usuario is not None and usuario==request.user:
-        usuario.delete()
-        messages.success(request, "Perfil deletado com sucesso")
-        return redirect('login')
-    else:
-        messages.error(request, "Nome de usuário ou senha errado")
+        usuario = authenticate(username=email, password=senha)
+        if usuario is not None and usuario==request.user:
+            usuario.delete()
+            messages.success(request, "Perfil deletado com sucesso")
+            return redirect('login')
+        else:
+            messages.error(request, "Nome de usuário ou senha errado")
       
     return render(request,'deletarPerfil.html')
    
