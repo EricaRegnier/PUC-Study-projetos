@@ -65,16 +65,16 @@ class Pergunta(models.Model):
     data=models.DateField()
     hora=models.TimeField()
     conteudo=models.TextField()
-    usuario=models.ForeignKey(Usuario, on_delete=models.RESTRICT)
-    disciplina=models.ForeignKey(Disciplina, on_delete=models.RESTRICT)
+    usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    disciplina=models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
 
 class Resposta(models.Model):
     data=models.DateField()
     hora=models.TimeField()
     conteudo=models.TextField()
-    usuario=models.ForeignKey(Usuario, on_delete=models.RESTRICT)
-    pergunta=models.ForeignKey(Pergunta, on_delete=models.RESTRICT)
+    usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    pergunta=models.ForeignKey(Pergunta, on_delete=models.CASCADE)
 
 
 class Encontro(models.Model):
