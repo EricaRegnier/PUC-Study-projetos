@@ -3,20 +3,20 @@
 <head>
     <link rel="icon" href= "../../static/Favicon.png"  type="image/x-icon">
     <h1 style="color:#6008AA ; text-align: center;"> Editar seu perfil </h1>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <hr>
-</head>
-<style>
-    body {
+    <style>
+      body {
         background:black;
-            text-align: center;
-            padding-left: 10px;
-            padding-right: 10px;
-            font-family: allumi-std, sans-serif;
-			font-style: normal;
-			font-weight: 500;
-            color: #fffffe;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: allumi-std, sans-serif;
+			  font-style: normal;
+			  font-weight: 500;
+        color: #fffffe;
+      }
 
-        }
       .center {
         margin: 0;
         position: absolute;
@@ -25,14 +25,19 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
       }
-	  .container {
+	    .container {
         height: 200px;
         position: relative;
       }
 </style>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <br />
 <div class="col-sm-4" style = "display: block; margin: auto;">
-      <div class="card-body">
+      <div class="card" style="background: #7f5af0; padding: 15px">
         <ul class="list-group">
   <form action="" method="post">
     {% csrf_token %}
