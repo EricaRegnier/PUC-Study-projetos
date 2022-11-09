@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from datetime import date
 
 
 class UserManager(BaseUserManager):
@@ -42,13 +41,15 @@ class Usuario(AbstractBaseUser):
 
 
 class Disciplina(models.Model):
-    codigo=models.IntegerField(default=7)
+    codigo=models.CharField(max_length=7)
     professores=models.TextField()
     materiais=models.TextField()
+
 
 class Mensagem(models.Model):
     data=models.DateField()
     hora=models.CharField(max_length=5)
+
 
 class Avaliacao(models.Model):
    professor=models.CharField(max_length=100)
@@ -59,27 +60,30 @@ class Avaliacao(models.Model):
    dificuldade=models.IntegerField(default=2)
    observacao=models.TextField()
 
+
 class Pergunta(models.Model):
     data=models.DateField()
-    hora=models.CharField(max_length=5)
+    hora=models.TimeField()
     conteudo=models.TextField()
+    usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    disciplina=models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+
 
 class Resposta(models.Model):
     data=models.DateField()
-    hora=models.CharField(max_length=5)
+    hora=models.TimeField()
     conteudo=models.TextField()
+    usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    pergunta=models.ForeignKey(Pergunta, on_delete=models.CASCADE)
+
 
 class Encontro(models.Model):
     local=models.CharField(max_length=100)
-    horaio=models.CharField(max_length=5)
+    horario=models.TimeField()
     dia=models.DateField()
     pessoasConfirmadas=models.ManyToManyField(Usuario)
-    frequincia=models.CharField(max_length=100)
-
-class Demanda(models.Model):
     frequencia=models.CharField(max_length=100)
 
 
-
-
-
+class Demanda(models.Model):
+    frequencia=models.CharField(max_length=100)

@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout, deletar
-from .forms import RegistroForm, RegistroAvaliacaoForm
-
+from django.contrib.auth import login, authenticate, logout
+from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm
 
 def index(request):
     return render(request, 'index.html')
@@ -49,6 +48,21 @@ def perfilUsuario(request):
     return render(request, 'perfilusuario.html', {'usuario':usuario})
 
 
+def updateUsuario(request):
+    usuario = request.user
+    if request.method == 'POST':
+        form = UpdateUsuarioForm(request.POST, instance=usuario)
+        print(form.errors)
+        if form.is_valid():
+            print(form.errors)
+            form.save()
+            return redirect('perfilUsuario')
+    else:
+        form = UpdateUsuarioForm(instance=usuario)
+
+    return render(request, 'editarPerfil.html', {'form': form})
+
+
 def menu(request):
     return render(request, 'menu.html')
 
@@ -69,17 +83,25 @@ def notificacoes(request):
     return render(request, 'notificacoes.html')
     
     
+def notificacoesUsuario(request):
+    usuario=request.user
+    perguntas = usuario.pergunta_set.all()
+    return render(request, 'Notificações do usuário.html', {'perguntas': perguntas})
+
+
 def deletarPerfilUsuario(request):
     if request.method=='POST':
         email=request.POST['email']
         senha=request.POST['senha']
     usuario = authenticate(email=email, password=senha)
-    if usuario is not None:
-        deletar(request, usuario)
+    if usuario is not None and usuario==request.user:
+        usuario.delete()
         messages.success(request, "Perfil deletado com sucesso")
         return redirect('login')
     else:
         messages.error(request, "Nome de usuário ou senha errado")
-    
-        
+      
     return render(request,'deletarPerfil.html')
+   
+    
+    
