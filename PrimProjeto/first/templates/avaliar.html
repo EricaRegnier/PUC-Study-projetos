@@ -19,19 +19,143 @@
             color: #fffffe;
 
         }  
-       
+        form{
+            display: grid;
+            grid-template-columns: clamp(250px, 50%, 500px); 
+            grid-template-rows: auto auto auto auto auto auto;
+            justify-content: center;
+            row-gap: 20px;
+        }
+       .pergunta{
+        font-size: 20px;
+        grid-column-start: 2;
+        grid-column-end: 4;
+        align-self: center;
+        text-align: center;
+       }
 
     </style>
 </head>
 <body>
     <br>
     <h1  style = "display: block;">
-        AVALIAÇÕES
+        AVALIAÇÃO
     </h1>
     <hr class="my-4" style = "background-color: #fffffe">
     <h2> Nome da disciplina</h2>
     <h3> Código da disciplina</h2> <br>
-
+<form>
+    <div class="card" style="background: #7f5af0; padding: 15px">
+        <p class="pergunta">1. Quem foi seu professor(a)?</p>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Nome já avaliado
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Outro/a(s):
+            </label> <input class="form-control form-control-sm" style="width: 170px;" type="text" placeholder="">   
+        </div>  
+    </div>
+    <div class="card" style="background: #7f5af0; padding: 15px">
+        <p class="pergunta">2. Qual seu grau de satisfação com seu professor(a)?</p>
+        <div class="slidecontainer">
+            <label>Muito insatisfeito</label>
+            <input type="range" min="0" max="10" value="5" class="slider" id="myRange">
+            <label>Muito satisfeito</label>
+        </div>
+    </div>
+    <div class="card" style="background: #7f5af0; padding: 15px">
+        <p class="pergunta">3. Como você classificaria o nível de cobrança desse professor(a)?</p>
+        <div class="slidecontainer">
+            <label>Exigia pouco</label>
+            <input type="range" min="0" max="10" value="5" class="slider" id="myRange">
+            <label>Cobrava demais</label>
+        </div>
+    </div>
+    <div class="card" style="background: #7f5af0; padding: 15px">
+        <p class="pergunta">4. Qual era o modelo de cobrança?</p>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Prova
+            </label>
+            <label for="quantidade">- Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" min="1" max="6" step="1">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Trabalhos
+            </label>
+            <select class="form-control form-control-sm" style="width: 170px;">
+                <option>Semanal</option>
+                <option>Quinzenal</option>
+                <option>Mensal</option>
+                <option>3x no período</option>
+                <option>2x no período</option>
+                <option>1x no período</option>
+                <option>Não definida</option>
+            </select>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Avaliação
+            </label>
+            <select class="form-control form-control-sm" style="width: 170px;">
+                <option>Semanal</option>
+                <option>Quinzenal</option>
+                <option>Mensal</option>
+                <option>3x no período</option>
+                <option>2x no período</option>
+                <option>1x no período</option>
+                <option>Não definida</option>
+            </select>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">Outro:</label> 
+            <input class="form-control form-control-sm" style="width: 170px;" type="text" placeholder="">   
+        </div>  
+    </div>
+    <div class="card" style="background: #7f5af0; padding: 15px;">
+        <p class="pergunta">5. Quantas horas por semana em média você dedicava para estudar essa disciplina fora do horário de aula?</p>      
+        <input type="radio" id="" name="freq" value="">
+        <label>Menos de 1 hora</label><br>
+        <input type="radio" id="" name="freq" value="">
+        <label>1 a 2 horas</label><br>
+        <input type="radio" id="" name="freq" value="">
+        <label>3 a 4 horas</label><br>
+        <input type="radio" id="" name="freq" value="">
+        <label>5 a 6 horas</label><br>
+        <input type="radio" id="" name="freq" value="">
+        <label>Mais de 6 horas</label><br>
+    </div>
+    <div class="card" style="background: #7f5af0; padding: 15px">
+        <p class="pergunta">6. O quanto você acredita que essa disciplina contribuiu para sua formação?</p>
+        <div class="slidecontainer">
+            <label>Pouco</label>
+            <input type="range" min="0" max="10" value="5" class="slider" id="myRange">
+            <label>Muito</label>
+        </div>
+    </div>
+    <div class="card" style="background: #7f5af0; padding: 15px">
+        <p class="pergunta">7. Quão difícil foi essa disciplina para você?</p>
+        <div class="slidecontainer">
+            <label>Tranquila</label>
+            <input type="range" min="0" max="10" value="5" class="slider" id="myRange">
+            <label>Muito difícil</label>
+        </div>
+    </div>
+    <br>
+    <!submit form button->
+    <button type="submit" class="btn btn-primary" style="width: 90px; font-weight: 700; font-size: 18px; color: #7f5af0; background: #fffffe; border-color: #fffffe; justify-self: center;">Enviar</button>
+</form>
+<br><br><br>
 
 
 </body>
