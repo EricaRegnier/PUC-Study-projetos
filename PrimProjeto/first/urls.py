@@ -15,4 +15,5 @@ urlpatterns = [
     path('notificacoes', views.notificacoes, name='notificacoes'),
     path('notificacoesUsuario', views.notificacoesUsuario, name='notificacoesUsuario'),
     path('deletar', views.deletarPerfilUsuario, name="deletar"),
+    path('encontro',views.encontrar,name='encontro'),
 ]
