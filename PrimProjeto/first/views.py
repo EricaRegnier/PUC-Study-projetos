@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm
+from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm, MarcarEncontroForm
 
 def index(request):
     return render(request, 'index.html')
@@ -103,5 +103,13 @@ def deletarPerfilUsuario(request):
       
     return render(request,'deletarPerfil.html')
    
-    
+def encontrar(request):
+    if request.method=='POST':
+        form=MarcarEncontroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('menu')
+    else:
+        form = MarcarEncontroForm()
+    return render(request, 'encontros.html', {'form': form})   
     

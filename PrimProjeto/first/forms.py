@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Avaliacao,Usuario
+from .models import Avaliacao,Usuario,Encontro
 
 
 class RegistroForm(UserCreationForm):
@@ -24,4 +24,8 @@ class DeletarPerfilUsuario(forms.ModelForm):
     class meta:
         model = Usuario
         fields = ('nome','sobrenome','email','senha')
-    
+  
+class MarcarEncontroForm(forms.ModelForm):
+    class Meta:
+        model = Encontro
+        fields = ('local','horario','dia','pessoasConfirmadas','frequencia')  
