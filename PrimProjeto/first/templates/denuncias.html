@@ -49,8 +49,12 @@
         <div class="card" style = "background-color: #7f5af0; color: #fffffe;">
           <div class="card-body">
             <h5 class="card-title">Denúncia</h5>
-            <ul class="list-group">
-              <li class="list-group-item" style = "color: #16161a"> Escreva aqui o motivo da sua denúncia </li>
+            <ul class="list-group"> 
+		    <form action="" method="post">
+                    {% csrf_token %}
+                      Denúncia:<br>
+                      <input name="comentário" value="">
+                      <br><br>
             </ul>
           </div>
         </div>
