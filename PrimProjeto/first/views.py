@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.http import JsonResponse
 from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm, MarcarEncontroForm
+from .models import Mensagem, Disciplina
+
 
 def index(request):
     return render(request, 'index.html')
@@ -113,3 +116,19 @@ def encontrar(request):
         form = MarcarEncontroForm()
     return render(request, 'encontros.html', {'form': form})   
     
+
+def chatRoom(request, pk):
+    disciplina = Disciplina.objects.get(id=pk)
+    mensagens = disciplina.mensagem_set.all()
+    usuario = request.user
+    if request.method == 'POST':
+        texto=request.POST['texto']
+        mensagem = Mensagem.objects.create(usuario=usuario, texto=texto, disciplina=disciplina)
+        mensagem.save()
+    return render(request, 'chat.html', {'mensagens': mensagens, 'disciplina':disciplina})
+
+
+def chatRecebe(request,pk):
+    disciplina = Disciplina.objects.get(id=pk)
+    mensagens = disciplina.mensagem_set.all()
+    return JsonResponse({"mensagens":list(mensagens.values())})

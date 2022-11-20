@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from datetime import datetime
 
 
 class UserManager(BaseUserManager):
@@ -47,8 +48,10 @@ class Disciplina(models.Model):
 
 
 class Mensagem(models.Model):
-    data=models.DateField()
-    hora=models.CharField(max_length=5)
+    dataHora=models.DateTimeField(default = datetime.now)
+    usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    texto=models.CharField(max_length=1000)
+    disciplina=models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
 
 class Avaliacao(models.Model):
@@ -62,16 +65,14 @@ class Avaliacao(models.Model):
 
 
 class Pergunta(models.Model):
-    data=models.DateField()
-    hora=models.TimeField()
+    dataHora=models.DateTimeField(default = datetime.now)
     conteudo=models.TextField()
     usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
     disciplina=models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
 
 class Resposta(models.Model):
-    data=models.DateField()
-    hora=models.TimeField()
+    dataHora=models.DateTimeField(default = datetime.now)
     conteudo=models.TextField()
     usuario=models.ForeignKey(Usuario, on_delete=models.CASCADE)
     pergunta=models.ForeignKey(Pergunta, on_delete=models.CASCADE)
@@ -87,3 +88,4 @@ class Encontro(models.Model):
 
 class Demanda(models.Model):
     frequencia=models.CharField(max_length=100)
+

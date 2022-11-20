@@ -14,6 +14,9 @@ urlpatterns = [
     path('registroAvaliacao', views.registroAvaliacao, name='registroAvaliacao'),
     path('notificacoes', views.notificacoes, name='notificacoes'),
     path('notificacoesUsuario', views.notificacoesUsuario, name='notificacoesUsuario'),
-    path('deletar', views.deletarPerfilUsuario, name="deletar"),
-    path('encontro',views.encontrar,name='encontro'),
+    path('deletar', views.deletarPerfilUsuario, name='deletar'),
+    path('encontro', views.encontrar, name='encontro'),
+    path('chat/<int:pk>/', views.chatRoom, name='chatRoom'),
+    path('chatRecebe/<int:pk>/', views.chatRecebe, name='chatRecebe'),
+
 ]
