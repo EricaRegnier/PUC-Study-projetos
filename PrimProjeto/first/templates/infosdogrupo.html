@@ -12,12 +12,8 @@
             background: #16161a;
         }
         .corpo{
-            padding-top: clamp(100px,20vh,170px);
-            display: grid;
-            grid-template-columns: clamp(120px,30vw,220px) auto auto clamp(120px,30vw,220px);
-            grid-template-rows: auto auto 120px 120px auto;
-            grid-column-gap: 30px;
-            grid-row-gap: 30px;
+            padding-top: clamp(50px,14vh,100px);
+            margin-left: clamp(120px,30vw, 210px);
         }
 
         .texto{
@@ -72,7 +68,39 @@
             align-self: center;
         }
 
-        
+        .bt-chat{
+            background: #7f5af0; 
+            border-radius: 10px; 
+            padding: 5px;
+            cursor: pointer; 
+            border: none; 
+            color: #fffffe;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            max-width: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .bt-encontro{
+            background:#31313d;; 
+            border-radius: 5px; 
+            padding: 2px;
+            padding-left: 4px;
+            padding-right: 4px;
+            cursor: pointer; 
+            border: none; 
+            color: #fffffe;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            min-width: 130px;
+            align-self: center;
+        }
+
     </style>
 </head>
 <body>
@@ -94,6 +122,8 @@
             <a href="inf1039.html">Nome da disc</a><br>
             <a href="inf1039.html">Código Disc</a>
             <p class="divisoria">___________</p>
+            <a href="chat.html">Chat</a><br>
+            <p class="divisoria">___________</p>
             <p>On-line agora:</p>
             <p>Nome do usuário</p>
             <p>Nome do usuário</p>
@@ -101,9 +131,29 @@
             <p>Nome do usuário</p>
         </div>
     </div>
-
+    
     <div class="corpo texto">
-
+        <div style="text-align: center;">
+        <h1> Nome da disciplina</h1><br>
+        <h2> Código da disciplina</h2><br>
+        </div>
+        <a class="bt-chat" href="menu.html"><button class="bt-chat">+ Adicionar pergunta ao feed</button></a>
+        <br>
+        <div class="card" style = "max-width: 300px; background-color: #7f5af0; color: #fffffe; padding: 10px; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
+            <div>
+            <h5 >DATA e HORA</h5>
+                <p>Aqui terá o local</p>
+                <a class="bt-encontro" href="encontros.html"><button class="bt-encontro">Mais detalhes</button></a>	
+            </div>
+        </div><br>
+        <div class="card" style = "max-width: 300px; background-color: #7f5af0; color: #fffffe; padding: 10px; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
+            <div >
+            <h5 >DATA e HORA</h5>
+                <p>Aqui terá o local</p>
+                <a class="bt-encontro" href="encontros.html"><button class="bt-encontro">Mais detalhes</button></a>	
+            </div>
+        </div>
+        <a class="bt-chat" href="menu.html"><button class="bt-chat">+ Adicionar encontro</button></a>
     </div>
 
 </body>
