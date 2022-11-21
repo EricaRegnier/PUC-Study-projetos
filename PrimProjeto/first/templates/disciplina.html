@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href= "{% static Favicon.png %}"  type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUC Study {{disciplina.codigo}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            background: #16161a;
+        }
+        .corpo{
+            padding-top: clamp(100px,20vh,170px);
+            display: grid;
+            grid-template-columns: clamp(120px,30vw,220px) auto auto clamp(120px,30vw,220px);
+            grid-template-rows: auto auto 120px 120px auto;
+            grid-column-gap: 30px;
+            grid-row-gap: 30px;
+        }
+        .titulo-disc{
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            align-self: center;
+            text-align: center;
+        }
+        .codigo-disc{
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            align-self: center;
+            text-align: center;
+        }
+
+        .bt-chat{
+            background: #7f5af0; 
+            border-radius: 10px; 
+            padding: 20px;
+            padding-right: 35px;
+            padding-left: 35px;
+            cursor: pointer; 
+            border: none; 
+            color: #fffffe;
+            font-size: 30px;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            justify-self: right;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .bt-av{
+            background: #7f5af0; 
+            border-radius: 10px; 
+            padding: 20px;
+            cursor: pointer; 
+            border: none; 
+            color: #fffffe;
+            font-size: 25px;
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            text-align: center;
+            justify-self: left;
+            max-width: 200px;
+        }
+
+        .bt-materiais{
+            background: #7f5af0; 
+            border-radius: 10px; 
+            padding: 20px;
+            cursor: pointer; 
+            border: none; 
+            color: #fffffe;
+            font-size: 30px;
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row-start: 4;
+            grid-row-end: 5;
+            text-align: center;
+            justify-self: center;
+            max-width: 200px;
+        }
+
+        .texto{
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: allumi-std, sans-serif;
+			font-style: normal;
+			font-weight: 200;
+            color: #fffffe;
+        }
+
+        .topbar{
+            display: flex;
+            background: #7f5af0;
+            justify-content: space-around;
+            position: fixed;
+            width: 100%;
+            z-index: 10000;
+        }
+
+        .fillerTopbar{
+            color: #7f5af0;
+        }
+        .linkEntrar{
+            align-self: center;
+            color: #fffffe;
+        }
+        
+        .logo{
+            height: 10vh;
+            max-height: 90px;
+            min-height: 40px;
+        }
+        
+        .barra-busca{
+            background-color: #31313d;
+            margin-top: clamp(70px,10vh,120px);
+            position: fixed;
+            justify-content: center;
+            z-index: 10000;
+            width: 45vw;
+            
+        }
+
+        .botao-busca{
+            color: #fffffe;
+            background-color: #7f5af0;
+            border-color: #7f5af0;
+        }
+
+        .aside{
+            display: flex;
+            position: fixed;
+            flex-direction: column;
+            background: #31313d;
+            margin-top: clamp(40px,10vh,90px);
+            padding-top: clamp(5px,2vh,10px);
+            flex-shrink: 1;
+            width: 30vw;
+            min-width: 110px;
+            max-width: 200px;
+            height: 100%;
+            justify-content: flex-start;
+            
+        }
+
+        .divisoria{
+            align-self: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    <div class="topbar">
+        <div class="fillerTopbar">
+            <p>Entrar</p>
+        </div>
+        <img class="logo" src="{% static 'logo puc study.png' %}" alt="Logo escrito PUC Study"></img>
+        <a class="linkEntrar" href="{% url 'login' %}">Entrar</a>
+    </div>
+
+    <div class="aside">
+        <a class="texto" href="{% url 'notificacoes' %}">Notificações</a>
+        <div class="texto divisoria">
+            <p>___________</p>
+        </div>
+        <div class="texto">
+            <p>Histórico de chats</p>
+        </div>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <form class="form-inline barra-busca mx-auto">
+            <div style="color: #fffffe; padding-right: 1vw; padding-left: 1vw">
+                <p>Buscar disciplina</p>
+            </div>
+            <div class="form-group mx-ms-3">
+                <input type="search" value="" class="form-control" id="search" placeholder="Código NNN0000" onchange="abrirPag()">
+            </div>
+            <button type="submit" class="btn" style="background-color: #7f5af0; color: #fffffe" onclick="abrirPag()">Buscar</button>
+        </form>
+    </div>
+    
+    <button type="button" class="btn-close" aria-label="Close"></button>
+
+    <div class="corpo texto">
+        <h1 class="titulo-disc">{{disciplina.nome}}</h1>
+        <h2 class="codigo-disc">{{disciplina.codigo}}</h2>
+        <a class="bt-chat" href="{% url 'chat' disciplina.id %}"><button class="bt-chat">Chat</button></a>
+        <a class="bt-av" href="{% url 'avaliacao' disciplina.id %}"><button class="bt-av">Avaliações</button></a>
+        <a class="bt-materiais" href="menu.html"><button class="bt-materiais">Materiais</button></a>
+    </div>
+</body>
+</html>

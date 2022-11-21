@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.db.models import Avg
 from django.http import JsonResponse
 from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm, MarcarEncontroForm
 from .models import Mensagem, Disciplina
@@ -82,6 +83,17 @@ def registroAvaliacao(request):
     return render(request, 'registroAvaliacao.html', {'form': form})
 
 
+def avaliacao(request, pk):
+    disciplina = Disciplina.objects.get(id=pk)
+    avaliacoes = disciplina.avaliacao_set.all()
+    context= {
+        'horas': avaliacoes.aggregate(mediaHoras=Avg('horasFora')),
+        'cobranca': avaliacoes.aggregate(mediaCobranca=Avg('cobranca')),
+        'disciplina': disciplina
+    }
+    return render(request, 'área_de_ver_avs.html', context)
+
+
 def notificacoes(request):
     return render(request, 'notificacoes.html')
     
@@ -117,7 +129,7 @@ def encontrar(request):
     return render(request, 'encontros.html', {'form': form})   
     
 
-def chatRoom(request, pk):
+def chat(request, pk):
     disciplina = Disciplina.objects.get(id=pk)
     mensagens = disciplina.mensagem_set.all()
     usuario = request.user
@@ -132,3 +144,8 @@ def chatRecebe(request,pk):
     disciplina = Disciplina.objects.get(id=pk)
     mensagens = disciplina.mensagem_set.all()
     return JsonResponse({"mensagens":list(mensagens.values())})
+
+
+def disciplina(request, pk):
+    disciplina = Disciplina.objects.get(id=pk)
+    return render(request, 'disciplina.html', {'disciplina':disciplina})

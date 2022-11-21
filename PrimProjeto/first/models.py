@@ -42,9 +42,12 @@ class Usuario(AbstractBaseUser):
 
 
 class Disciplina(models.Model):
+    nome=models.CharField(max_length=100)
     codigo=models.CharField(max_length=7)
     professores=models.TextField()
     materiais=models.TextField()
+    def __str__(self):
+        return self.codigo
 
 
 class Mensagem(models.Model):
@@ -62,6 +65,7 @@ class Avaliacao(models.Model):
    contribuicao=models.IntegerField(default=2)#mesma coisa da cobrança
    dificuldade=models.IntegerField(default=2)
    observacao=models.TextField()
+   disciplina=models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
 
 class Pergunta(models.Model):
@@ -87,5 +91,8 @@ class Encontro(models.Model):
 
 
 class Demanda(models.Model):
-    frequencia=models.CharField(max_length=100)
-
+    tipo=models.CharField(max_length=100)
+    disciplina=models.ManyToManyField(Disciplina)
+    
+    def __str__(self):
+        return self.tipo
