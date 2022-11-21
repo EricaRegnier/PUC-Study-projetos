@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href= "../../static/Favicon.png"  type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUC Study Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            background: #16161a;
+        }
+        .corpo{
+            padding-top: clamp(100px,20vh,170px);
+            display: grid;
+            grid-template-columns: clamp(120px,30vw,220px) auto auto clamp(120px,30vw,220px);
+            grid-template-rows: auto auto 120px 120px auto;
+            grid-column-gap: 30px;
+            grid-row-gap: 30px;
+        }
+
+        .texto{
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: allumi-std, sans-serif;
+			font-style: normal;
+			font-weight: 200;
+            color: #fffffe;
+        }
+
+        .topbar{
+            display: flex;
+            background: #7f5af0;
+            justify-content: space-around;
+            position: fixed;
+            width: 100%;
+            z-index: 10000;
+        }
+
+        .fillerTopbar{
+            color: #7f5af0;
+        }
+        .linkEntrar{
+            align-self: center;
+            color: #fffffe;
+        }
+        
+        .logo{
+            height: 10vh;
+            max-height: 90px;
+            min-height: 40px;
+        }
+        
+        .aside{
+            display: flex;
+            position: fixed;
+            flex-direction: column;
+            background: #31313d;
+            margin-top: clamp(40px,10vh,90px);
+            padding-top: clamp(5px,2vh,10px);
+            flex-shrink: 1;
+            width: 30vw;
+            min-width: 110px;
+            max-width: 200px;
+            height: 100%;
+            justify-content: flex-start;
+            
+        }
+
+        .divisoria{
+            align-self: center;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    <div class="topbar">
+        <div class="fillerTopbar">
+            <p>Entrar</p>
+        </div>
+        <img class="logo" src="../../static/logo puc study.png" alt="Logo escrito PUC Study"></img>
+        <a class="linkEntrar" href="login.html">Entrar</a>
+    </div>
+
+    <div class="aside texto">
+        <div style="align-self: center">
+            <a href="inf1039.html">Nome da disc</a><br>
+            <a href="inf1039.html">Código Disc</a>
+            <p class="divisoria">___________</p>
+            <p>On-line agora:</p>
+            <p>Nome do usuário</p>
+            <p>Nome do usuário</p>
+            <p>Nome do usuário</p>
+            <p>Nome do usuário</p>
+        </div>
+    </div>
+
+    <div class="corpo texto">
+
+    </div>
+
+</body>
+</html>
