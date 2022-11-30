@@ -57,6 +57,12 @@ class Mensagem(models.Model):
     disciplina=models.ForeignKey(Disciplina, on_delete=models.CASCADE)
 
 
+class Conexao(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+    ultAtivo = models.DateTimeField(default = datetime.now)
+
+
 class Avaliacao(models.Model):
    professor=models.CharField(max_length=100)
    satisfacaoProfessor=models.CharField(max_length=7)

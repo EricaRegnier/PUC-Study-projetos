@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+from django.utils import timezone
 from django.db.models import Avg
 from django.http import JsonResponse
 from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm, MarcarEncontroForm
-from .models import Mensagem, Disciplina
+from .models import Mensagem, Disciplina, Usuario, Conexao
+from datetime import datetime, timedelta
 
 
 def index(request):
@@ -130,20 +132,41 @@ def encontrar(request):
     
 
 def chat(request, pk):
-    disciplina = Disciplina.objects.get(id=pk)
-    mensagens = disciplina.mensagem_set.all()
     usuario = request.user
-    if request.method == 'POST':
-        texto=request.POST['texto']
-        mensagem = Mensagem.objects.create(usuario=usuario, texto=texto, disciplina=disciplina)
-        mensagem.save()
-    return render(request, 'chat.html', {'mensagens': mensagens, 'disciplina':disciplina})
+    disciplina = Disciplina.objects.get(id=pk)
+    conexoes = disciplina.conexao_set.all()
+    if not conexoes.filter(usuario=usuario):
+        conexao = Conexao.objects.create(usuario=usuario, disciplina=disciplina)
+        conexao.save()
+    else:
+        conexao = conexoes.get(usuario=usuario)
+        conexao.ultAtivo = datetime.now()
+
+    return render(request, 'chat.html', {'disciplina':disciplina})
 
 
 def chatRecebe(request,pk):
+    usuario = request.user
     disciplina = Disciplina.objects.get(id=pk)
+    conexoes = disciplina.conexao_set.all()
     mensagens = disciplina.mensagem_set.all()
-    return JsonResponse({"mensagens":list(mensagens.values())})
+    usuarios = Usuario.objects.all()
+    conexao = conexoes.get(usuario=usuario)
+    conexao.ultAtivo = timezone.now()
+    conexao.save()
+    online = conexoes.filter(ultAtivo__gt = timezone.now()-timedelta(seconds=5))
+
+    return JsonResponse({"mensagens":list(mensagens.values()), "usuarios":list(usuarios.values()), "usuario_id":request.user.id, "online":list(online.values())})
+
+
+def chatEnvia(request):
+    usuario = request.user
+    texto = request.POST['texto']
+    disciplina_id = request.POST['disciplina_id']
+    print(disciplina_id)
+    disciplina = Disciplina.objects.get(id=disciplina_id)
+    mensagem = Mensagem.objects.create(usuario=usuario, texto=texto, disciplina=disciplina)
+    mensagem.save()
 
 
 def disciplina(request, pk):
