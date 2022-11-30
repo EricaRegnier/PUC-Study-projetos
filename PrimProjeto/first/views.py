@@ -7,17 +7,20 @@ from django.http import JsonResponse
 from .forms import RegistroForm, RegistroAvaliacaoForm, UpdateUsuarioForm, MarcarEncontroForm
 from .models import Mensagem, Disciplina, Usuario, Conexao
 from datetime import datetime, timedelta
+from verify_email.email_handler import send_verification_email
+
 
 
 def registroUsuario(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
         if form.is_valid():
-            form.save()
+            send_verification_email(request,form)
             username = form.cleaned_data.get('username')
             senha = form.cleaned_data.get('password1')
             usuario = authenticate(username=username, password=senha)
             login(request, usuario)
+
             return redirect('menu')
     else:
         form = RegistroForm()
