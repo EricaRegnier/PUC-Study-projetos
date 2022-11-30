@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario, Disciplina, Mensagem, Avaliacao, Pergunta, Resposta, Encontro, Demanda
+from .models import Usuario, Disciplina, Mensagem, Avaliacao, Pergunta, Resposta, Encontro, Demanda, Conexao
 
 
 # Register your models here.
@@ -13,3 +13,4 @@ admin.site.register(Pergunta)
 admin.site.register(Resposta)
 admin.site.register(Encontro)
 admin.site.register(Demanda)
+admin.site.register(Conexao)
