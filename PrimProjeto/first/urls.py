@@ -1,16 +1,14 @@
 from django.urls import path
 from . import views
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.views.generic.base import RedirectView
+
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.menu, name='menu'),
     path('registro', views.registroUsuario, name='registro'),
     path('login', views.loginUsuario, name='login'),
     path('logout', views.logoutUsuario, name='logout'),
     path('perfilUsuario',views.perfilUsuario, name='perfilUsuario'),
     path('updateUsuario', views.updateUsuario, name='updateUsuario'),
-    path('menu', views.menu, name='menu'),
     path('registroAvaliacao', views.registroAvaliacao, name='registroAvaliacao'),
     path('avaliacao/<int:pk>', views.avaliacao, name='avaliacao'),
     path('notificacoes', views.notificacoes, name='notificacoes'),
@@ -20,4 +18,5 @@ urlpatterns = [
     path('chat/<int:pk>/', views.chat, name='chat'),
     path('chatRecebe/<int:pk>/', views.chatRecebe, name='chatRecebe'),
     path('disciplina/<int:pk>/', views.disciplina, name='disciplina'),
+    path('materiais/<int:pk>/', views.materiais, name='materiais'),
 ]

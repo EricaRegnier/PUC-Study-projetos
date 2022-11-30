@@ -9,10 +9,6 @@ from .models import Mensagem, Disciplina, Usuario, Conexao
 from datetime import datetime, timedelta
 
 
-def index(request):
-    return render(request, 'index.html')
-
-
 def registroUsuario(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
@@ -172,3 +168,9 @@ def chatEnvia(request):
 def disciplina(request, pk):
     disciplina = Disciplina.objects.get(id=pk)
     return render(request, 'disciplina.html', {'disciplina':disciplina})
+
+
+def materiais(request, pk):
+    disciplina = Disciplina.objects.get(id=pk)
+    materiais = disciplina.material_set.all()
+    return render(request, 'materiais.html', {'disciplina':disciplina, 'materiais':materiais})

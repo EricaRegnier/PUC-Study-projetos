@@ -31,8 +31,8 @@
 <body>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb" style = "background: #31313d;">
-        <li class="breadcrumb-item"><a href="menu.html">Disciplinas</a></li>
-        <li class="breadcrumb-item"><a href="disciplina.html">Página da disciplina</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'menu' %}">Disciplinas</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'disciplina' disciplina.id %}">Página da disciplina</a></li>
         <li class="breadcrumb-item active" aria-current="page">Materiais</li>
     </ol>
 </nav>
@@ -43,16 +43,15 @@
     MATERIAIS
 </h4>
 <hr class="my-4" style = "background-color: #fffffe"> <br>
-    <h6> Nome da disciplina</h6> <br>
-    <h6> Código da disciplina</h6> <br> <br>
+    <h6> {{disciplina.nome}}</h6> <br>
+    <h6> {{disciplina.codigo}}</h6> <br> <br>
 
-
-
+{% for material in materiais %}
     <div class="card" style="width: 18rem; margin: auto; background-color: #fffffe;">
       
         <div class="card-body">
             <img src="../../static/livro.png" alt="Imagem de capa do card" height="70"> 
-            <br><h5 class="card-title" style = "color: #16161a">Nome livro</h5> 
+            <br><h5 class="card-title" style = "color: #16161a">{{material.nome}}</h5> 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalLongoExemplo" style= "background-color: #7f5af0; color: #fffffe">
                 Ver a descrição
             </button>
@@ -71,7 +70,7 @@
           </button>
         </div>
         <div class="modal-body" style = "color: #16161a">
-          Na descrição você poderá ver onde encontrar esse material para estudo.
+          {{material.descricao}}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -79,41 +78,9 @@
       </div>
     </div>
   </div>
-
   <br>
   <br>
-  <div class="card" style="width: 18rem; margin: auto; background-color: #fffffe;">
-    <div class="card-body">
-        <img src="../../static/livro.png" alt="Imagem de capa do card" height="70"> 
-        <br><h5 class="card-title" style = "color: #16161a">Nome livro</h5> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalLongoExemplo" style= "background-color: #7f5af0; color: #fffffe">
-            Ver a descrição
-        </button>
-    </div>
-</div>        
-
-
-
-
-<div class="modal fade" id="ModalLongoExemplo" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="TituloModalLongoExemplo" style = "color: #16161a">Descrição</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body" style = "color: #16161a">
-      Na descrição você poderá ver onde encontrar esse material para estudo.
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-    </div>
-  </div>
-</div>
-</div>
-
+{% endfor %}
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -203,7 +203,7 @@
         <h2 class="codigo-disc">{{disciplina.codigo}}</h2>
         <a class="bt-chat" href="{% url 'chat' disciplina.id %}"><button class="bt-chat">Chat</button></a>
         <a class="bt-av" href="{% url 'avaliacao' disciplina.id %}"><button class="bt-av">Avaliações</button></a>
-        <a class="bt-materiais" href="menu.html"><button class="bt-materiais">Materiais</button></a>
+        <a class="bt-materiais" href="{% url 'materiais' disciplina.id %}"><button class="bt-materiais">Materiais</button></a>
     </div>
 </body>
 </html>

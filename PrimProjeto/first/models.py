@@ -45,9 +45,14 @@ class Disciplina(models.Model):
     nome=models.CharField(max_length=100)
     codigo=models.CharField(max_length=7)
     professores=models.TextField()
-    materiais=models.TextField()
     def __str__(self):
         return self.codigo
+
+
+class Material(models.Model):
+    nome=models.CharField(max_length=100)
+    descricao=models.TextField()
+    disciplina=models.ManyToManyField(Disciplina)
 
 
 class Mensagem(models.Model):
