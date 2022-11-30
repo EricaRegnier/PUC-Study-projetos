@@ -7,88 +7,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUC Study Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <style>
-        body {
-            background: #16161a;
-        }
-        .corpo{
-            padding-top: clamp(100px,20vh,170px);
-            margin-left: clamp(120px,30vw,220px);
-            margin-right: clamp(120px,30vw,220px);
-
-        }
-        .texto{
-            padding-left: 10px;
-            padding-right: 10px;
-            font-family: allumi-std, sans-serif;
-			font-style: normal;
-			font-weight: 200;
-            color: #fffffe;
-        }
-        .topbar{
-            display: flex;
-            background: #7f5af0;
-            justify-content: space-around;
-            position: fixed;
-            width: 100%;
-            z-index: 10000;
-        }
-
-        .fillerTopbar{
-            color: #7f5af0;
-        }
-        .linkEntrar{
-            align-self: center;
-            color: #fffffe;
-        }
-        
-        .logo{
-            height: 10vh;
-            max-height: 90px;
-            min-height: 40px;
-        }
-        
-        .barra-busca{
-            background-color: #31313d;
-            margin-top: clamp(70px,10vh,120px);
-            position: fixed;
-            justify-content: center;
-            z-index: 10000;
-            width: 45vw;
-            
-        }
-
-        .botao-busca{
-            color: #fffffe;
-            background-color: #7f5af0;
-            border-color: #7f5af0;
-        }
-
-        .aside{
-            display: flex;
-            position: fixed;
-            flex-direction: column;
-            background: #31313d;
-            margin-top: clamp(40px,10vh,90px);
-            padding-top: clamp(5px,2vh,10px);
-            flex-shrink: 1;
-            width: 30vw;
-            min-width: 110px;
-            max-width: 200px;
-            height: 100%;
-            justify-content: flex-start;
-            
-        }
-
-        .divisoria{
-            align-self: center;
-        }
-
-        
-
-
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
+<style>
+    body {
+        background: #16161a;
+    }
+    .corpo{
+        padding-top: clamp(100px,20vh,170px);
+        margin-left: clamp(120px,30vw,220px);
+        margin-right: clamp(120px,30vw,220px);
+
+    }
+    .texto{
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: allumi-std, sans-serif;
+		font-style: normal;
+		font-weight: 200;
+        color: #fffffe;
+    }
+    .topbar{
+        display: flex;
+        background: #7f5af0;
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        z-index: 10000;
+    }
+
+    .fillerTopbar{
+        color: #7f5af0;
+    }
+    .linkEntrar{
+        align-self: center;
+        color: #fffffe;
+    }
+        
+    .logo{
+        height: 10vh;
+        max-height: 90px;
+        min-height: 40px;
+    }
+        
+    .barra-busca{
+        background-color: #31313d;
+        margin-top: clamp(70px,10vh,120px);
+        position: fixed;
+        justify-content: center;
+        z-index: 10000;
+        width: 45vw;   
+    }
+
+    .botao-busca{
+        color: #fffffe;
+        background-color: #7f5af0;
+        border-color: #7f5af0;
+    }
+
+    .aside{
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        background: #31313d;
+        margin-top: clamp(40px,10vh,90px);
+        padding-top: clamp(5px,2vh,10px);
+        flex-shrink: 1;
+        width: 30vw;
+        min-width: 110px;
+        max-width: 200px;
+        height: 100%;
+        justify-content: flex-start;  
+    }
+
+    .divisoria{
+        align-self: center;
+    }
+
+</style>
 <body>
     
     <div class="topbar">
@@ -196,6 +192,54 @@
             <p>
             Além disso, temos a página de encontros onde os alunos marcam um local para se encontrarem e conversarem sobre a disciplina ou estudar
         </p>
+
+        <h1  style = "display: block;">
+            Feed
+        </h1>
+         <hr class="my-4" style = "background-color: #fffffe">
+        
+        <div class="row mx-md-n5">
+          <div class="col-sm-4" style = "display: block; margin: auto">
+            <div class="card" style = "background-color: #7f5af0; color: #fffffe;">
+              <div class="card-body">
+                <h5 class="card-title">INF1039</h5>
+                <hr>
+                <h6 class="card-title">Pergunta por jão123:</h6>
+                <ul class="list-group">
+                          Essa disciplina tem quantos créditos?<br>
+                          <div class="btn-group">
+                            <button onclick="document.location='chat.html'"class="btn btn-dark" style = "display: block; margin-left:auto; margin-right:auto; margin-top: 2cm ;background-color: #7f5af0; color: #fffffe" >Responder</button>
+                            </button>
+                          </div>
+
+                          <br><br>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <div class="row mx-md-n5">
+            <div class="col-sm-4" style = "display: block; margin: auto">
+              <div class="card" style = "background-color: #7f5af0; color: #fffffe;">
+                <div class="card-body">
+                  <h5 class="card-title">INF1039</h5>
+                  <hr>
+                  <h6 class="card-title">Pergunta por aninha24:</h6>
+                  <ul class="list-group">
+                            Qual é a ementa dessa disciplina?<br>
+                            <div class="btn-group">
+                              <button onclick="document.location='chat.html'"class="btn btn-dark" style = "display: block; margin-left:auto; margin-right:auto; margin-top: 2cm ;background-color: #7f5af0; color: #fffffe" >Responder</button>
+                              </button>
+                            </div>
+  
+                            <br><br>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
           
         <script>
             function abrirPag() {
