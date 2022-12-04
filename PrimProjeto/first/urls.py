@@ -17,6 +17,7 @@ urlpatterns = [
     path('encontro', views.encontrar, name='encontro'),
     path('chat/<int:pk>/', views.chat, name='chat'),
     path('chatRecebe/<int:pk>/', views.chatRecebe, name='chatRecebe'),
+    path('chatEnvia', views.chatEnvia, name='chatEnvia'),
     path('disciplina/<int:pk>/', views.disciplina, name='disciplina'),
     path('materiais/<int:pk>/', views.materiais, name='materiais'),
 ]
